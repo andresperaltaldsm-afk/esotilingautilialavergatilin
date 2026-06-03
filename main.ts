@@ -75,86 +75,14 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    animation.runImageAnimation(
-    yooo,
-    [img`
-        . . . . f f f f f f . . . . . . 
-        . . . f 2 f e e e e f f . . . . 
-        . . f 2 2 2 f e e e e f f . . . 
-        . . f e e e e f f e e e f . . . 
-        . f e 2 2 2 2 e e f f f f . . . 
-        . f 2 e f f f f 2 2 2 e f . . . 
-        . f f f e e e f f f f f f f . . 
-        . f e e 4 4 f b e 4 4 e f f . . 
-        . . f e d d f 1 4 d 4 e e f . . 
-        . . . f d d d d 4 e e e f . . . 
-        . . . f e 4 4 4 e e f f . . . . 
-        . . . f 2 2 2 e d d 4 . . . . . 
-        . . . f 2 2 2 e d d e . . . . . 
-        . . . f 5 5 4 f e e f . . . . . 
-        . . . . f f f f f f . . . . . . 
-        . . . . . . f f f . . . . . . . 
-        `,img`
-        . . . . . . . . . . . . . . . . 
-        . . . . f f f f f f . . . . . . 
-        . . . f 2 f e e e e f f . . . . 
-        . . f 2 2 2 f e e e e f f . . . 
-        . . f e e e e f f e e e f . . . 
-        . f e 2 2 2 2 e e f f f f . . . 
-        . f 2 e f f f f 2 2 2 e f . . . 
-        . f f f e e e f f f f f f f . . 
-        . f e e 4 4 f b e 4 4 e f f . . 
-        . . f e d d f 1 4 d 4 e e f . . 
-        . . . f d d d e e e e e f . . . 
-        . . . f e 4 e d d 4 f . . . . . 
-        . . . f 2 2 e d d e f . . . . . 
-        . . f f 5 5 f e e f f f . . . . 
-        . . f f f f f f f f f f . . . . 
-        . . . f f f . . . f f . . . . . 
-        `,img`
-        . . . . f f f f f f . . . . . . 
-        . . . f 2 f e e e e f f . . . . 
-        . . f 2 2 2 f e e e e f f . . . 
-        . . f e e e e f f e e e f . . . 
-        . f e 2 2 2 2 e e f f f f . . . 
-        . f 2 e f f f f 2 2 2 e f . . . 
-        . f f f e e e f f f f f f f . . 
-        . f e e 4 4 f b e 4 4 e f f . . 
-        . . f e d d f 1 4 d 4 e e f . . 
-        . . . f d d d d 4 e e e f . . . 
-        . . . f e 4 4 4 e e f f . . . . 
-        . . . f 2 2 2 e d d 4 . . . . . 
-        . . . f 2 2 2 e d d e . . . . . 
-        . . . f 5 5 4 f e e f . . . . . 
-        . . . . f f f f f f . . . . . . 
-        . . . . . . f f f . . . . . . . 
-        `,img`
-        . . . . . . . . . . . . . . . . 
-        . . . . f f f f f f . . . . . . 
-        . . . f 2 f e e e e f f . . . . 
-        . . f 2 2 2 f e e e e f f . . . 
-        . . f e e e e f f e e e f . . . 
-        . f e 2 2 2 2 e e f f f f . . . 
-        . f 2 e f f f f 2 2 2 e f . . . 
-        . f f f e e e f f f f f f f . . 
-        . f e e 4 4 f b e 4 4 e f f . . 
-        . . f e d d f 1 4 d 4 e e f . . 
-        . . . f d d d d 4 e e e f . . . 
-        . . . f e 4 4 4 e d d 4 . . . . 
-        . . . f 2 2 2 2 e d d e . . . . 
-        . . f f 5 5 4 4 f e e f . . . . 
-        . . f f f f f f f f f f . . . . 
-        . . . f f f . . . f f . . . . . 
-        `],
-    500,
-    true
-    )
+	
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (yooo.isHittingTile(CollisionDirection.Bottom)) {
         yooo.setVelocity(0, -100)
     }
 })
+let PALOMINI_PE = 0
 let yooo: Sprite = null
 let mySprite = false
 tiles.setCurrentTilemap(tilemap`level1`)
@@ -197,7 +125,103 @@ let novia = sprites.create(img`
     . . . f f f f f f f f f f . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Enemy)
-novia.setPosition(3, 36)
+novia.setPosition(3, 35)
+yooo.ay = 300
+music.play(music.melodyPlayable(music.beamUp), music.PlaybackMode.UntilDone)
+scene.cameraFollowSprite(yooo)
+novia = sprites.create(img`
+    . . . 2 2 5 2 . . . b d b . . . 
+    2 2 2 2 2 2 2 2 2 2 2 2 . . . . 
+    2 5 2 2 2 5 2 2 2 2 2 2 2 . . . 
+    2 2 2 5 2 2 b d f d d d 2 . . . 
+    2 2 2 2 2 2 d d 1 f d d f f . . 
+    1 . . . 2 d d 1 f f f d 4 c . . 
+    1 . . . 2 d d d f b d d 4 4 . . 
+    . b b b 2 d d d d d d 4 4 4 4 b 
+    b d d 2 2 2 d d d d d 4 4 4 b . 
+    b b d 2 2 2 b d d d d d d b . . 
+    c d c d d d d d d d d d b b b . 
+    c b d c d d d b d d d b d d d b 
+    . c d d c c b d d b b d d d b . 
+    . . c b d d d d d b d d d b b . 
+    . . . c c c c c c c c b b b . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Enemy)
+null.setPosition(PALOMINI_PE, 36)
+animation.runImageAnimation(
+yooo,
+[img`
+    . . . . f f f f f f . . . . . . 
+    . . . f 2 f e e e e f f . . . . 
+    . . f 2 2 2 f e e e e f f . . . 
+    . . f e e e e f f e e e f . . . 
+    . f e 2 2 2 2 e e f f f f . . . 
+    . f 2 e f f f f 2 2 2 e f . . . 
+    . f f f e e e f f f f f f f . . 
+    . f e e 4 4 f b e 4 4 e f f . . 
+    . . f e d d f 1 4 d 4 e e f . . 
+    . . . f d d d d 4 e e e f . . . 
+    . . . f e 4 4 4 e e f f . . . . 
+    . . . f 2 2 2 e d d 4 . . . . . 
+    . . . f 2 2 2 e d d e . . . . . 
+    . . . f 5 5 4 f e e f . . . . . 
+    . . . . f f f f f f . . . . . . 
+    . . . . . . f f f . . . . . . . 
+    `,img`
+    . . . . . . . . . . . . . . . . 
+    . . . . f f f f f f . . . . . . 
+    . . . f 2 f e e e e f f . . . . 
+    . . f 2 2 2 f e e e e f f . . . 
+    . . f e e e e f f e e e f . . . 
+    . f e 2 2 2 2 e e f f f f . . . 
+    . f 2 e f f f f 2 2 2 e f . . . 
+    . f f f e e e f f f f f f f . . 
+    . f e e 4 4 f b e 4 4 e f f . . 
+    . . f e d d f 1 4 d 4 e e f . . 
+    . . . f d d d e e e e e f . . . 
+    . . . f e 4 e d d 4 f . . . . . 
+    . . . f 2 2 e d d e f . . . . . 
+    . . f f 5 5 f e e f f f . . . . 
+    . . f f f f f f f f f f . . . . 
+    . . . f f f . . . f f . . . . . 
+    `,img`
+    . . . . f f f f f f . . . . . . 
+    . . . f 2 f e e e e f f . . . . 
+    . . f 2 2 2 f e e e e f f . . . 
+    . . f e e e e f f e e e f . . . 
+    . f e 2 2 2 2 e e f f f f . . . 
+    . f 2 e f f f f 2 2 2 e f . . . 
+    . f f f e e e f f f f f f f . . 
+    . f e e 4 4 f b e 4 4 e f f . . 
+    . . f e d d f 1 4 d 4 e e f . . 
+    . . . f d d d d 4 e e e f . . . 
+    . . . f e 4 4 4 e e f f . . . . 
+    . . . f 2 2 2 e d d 4 . . . . . 
+    . . . f 2 2 2 e d d e . . . . . 
+    . . . f 5 5 4 f e e f . . . . . 
+    . . . . f f f f f f . . . . . . 
+    . . . . . . f f f . . . . . . . 
+    `,img`
+    . . . . . . . . . . . . . . . . 
+    . . . . f f f f f f . . . . . . 
+    . . . f 2 f e e e e f f . . . . 
+    . . f 2 2 2 f e e e e f f . . . 
+    . . f e e e e f f e e e f . . . 
+    . f e 2 2 2 2 e e f f f f . . . 
+    . f 2 e f f f f 2 2 2 e f . . . 
+    . f f f e e e f f f f f f f . . 
+    . f e e 4 4 f b e 4 4 e f f . . 
+    . . f e d d f 1 4 d 4 e e f . . 
+    . . . f d d d d 4 e e e f . . . 
+    . . . f e 4 4 4 e d d 4 . . . . 
+    . . . f 2 2 2 2 e d d e . . . . 
+    . . f f 5 5 4 4 f e e f . . . . 
+    . . f f f f f f f f f f . . . . 
+    . . . f f f . . . f f . . . . . 
+    `],
+500,
+true
+)
 yooo.ay = 300
 music.play(music.melodyPlayable(music.beamUp), music.PlaybackMode.UntilDone)
 forever(function () {
