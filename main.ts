@@ -71,7 +71,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . f f . . . f f f . . . 
         `],
     500,
-    false
+    true
     )
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -147,7 +147,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . f f f . . . f f . . . . . 
         `],
     500,
-    false
+    true
     )
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
