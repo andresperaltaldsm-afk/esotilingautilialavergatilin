@@ -150,6 +150,11 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     false
     )
 })
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (yooo.isHittingTile(CollisionDirection.Bottom)) {
+        yooo.setVelocity(0, -150)
+    }
+})
 let yooo: Sprite = null
 let mySprite = false
 tiles.setCurrentTilemap(tilemap`level1`)
@@ -171,10 +176,29 @@ yooo = sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
-tiles.placeOnTile(yooo, tiles.getTileLocation(0, 7))
-controller.moveSprite(yooo, 100, 0)
+tiles.placeOnRandomTile(yooo, assets.tile`miMosaico1`)
+controller.moveSprite(yooo, 100, 100)
 scene.cameraFollowSprite(yooo)
-yooo.ay = 300
+let novia = sprites.create(img`
+    . . . . . . f f f . . . . . . . 
+    . . . . . f 5 8 5 f f . . . . . 
+    . . . . f 1 8 2 8 1 f f . . . . 
+    . . . f 1 f f f f f 1 f f . . . 
+    . . . f f f f f f f f 1 f . . . 
+    . . . f f f f d d f f f f . . . 
+    . . f f f d f d d f d f f f . . 
+    . . f f f d 2 d d 2 d f f f . . 
+    . . f f f f 2 2 d 2 f f f f . . 
+    . f f f f 1 f f f f 2 f f f f . 
+    . . f f d 2 5 1 2 5 2 1 f f . . 
+    . . f d 2 f 1 5 2 1 f 1 2 f . . 
+    . . . f 2 2 1 1 1 2 1 f f . . . 
+    . . . f 1 1 5 1 1 5 2 1 f . . . 
+    . . . f f f f f f f f f f . . . 
+    . . . . . f f . . f f . . . . . 
+    `, SpriteKind.Enemy)
+novia.setPosition(0, 0)
+music.play(music.melodyPlayable(music.beamUp), music.PlaybackMode.UntilDone)
 forever(function () {
     music.play(music.stringPlayable("C C5 B F G D F C ", 125), music.PlaybackMode.UntilDone)
 })
