@@ -150,6 +150,11 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     false
     )
 })
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (yooo.isHittingTile(CollisionDirection.Bottom)) {
+        yooo.setVelocity(0, -100)
+    }
+})
 let yooo: Sprite = null
 let mySprite = false
 tiles.setCurrentTilemap(tilemap`level1`)
@@ -171,8 +176,8 @@ yooo = sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
-tiles.placeOnRandomTile(yooo, assets.tile`miMosaico1`)
-controller.moveSprite(yooo, 100, 100)
+tiles.placeOnTile(yooo, tiles.getTileLocation(3, 35))
+controller.moveSprite(yooo, 100, 0)
 scene.cameraFollowSprite(yooo)
 let novia = sprites.create(img`
     . . . . . . f f f . . . . . . . 
