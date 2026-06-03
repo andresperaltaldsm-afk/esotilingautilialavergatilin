@@ -193,3 +193,7 @@ let novia = sprites.create(img`
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Enemy)
 novia.setPosition(0, 0)
+music.play(music.melodyPlayable(music.beamUp), music.PlaybackMode.UntilDone)
+forever(function () {
+    music.play(music.stringPlayable("C C5 B F G D F C ", 125), music.PlaybackMode.UntilDone)
+})
