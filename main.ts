@@ -150,8 +150,8 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     false
     )
 })
-let mySprite = false
 let yooo: Sprite = null
+let mySprite = false
 tiles.setCurrentTilemap(tilemap`level1`)
 yooo = sprites.create(img`
     . . . . . . f f f f . . . . . . 
@@ -193,10 +193,3 @@ let novia = sprites.create(img`
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Enemy)
 novia.setPosition(0, 0)
-game.onUpdate(function () {
-    let MOVING = 0
-    mySprite = controller.up.isPressed() || (true || (controller.left.isPressed() || controller.right.isPressed()))
-    if (!(MOVING)) {
-        animation.stopAnimation(animation.AnimationTypes.All, yooo)
-    }
-})
