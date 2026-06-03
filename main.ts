@@ -197,7 +197,8 @@ let novia = sprites.create(img`
     . . . f f f f f f f f f f . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Enemy)
-novia.setPosition(0, 0)
+novia.setPosition(3, 36)
+yooo.ay = 300
 music.play(music.melodyPlayable(music.beamUp), music.PlaybackMode.UntilDone)
 forever(function () {
     music.play(music.stringPlayable("C C5 B F G D F C ", 125), music.PlaybackMode.UntilDone)
