@@ -1,6 +1,6 @@
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (yooo.isHittingTile(CollisionDirection.Bottom)) {
-        yooo.setVelocity(0, -100)
+        yooo.setVelocity(0, -150)
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -156,10 +156,13 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
+    game.setGameOverEffect(false, effects.smiles)
     game.gameOver(false)
 })
-scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
-	
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.hazardLava1, function (sprite, location) {
+    sprites.destroy(yooo, effects.fire, 500)
+    game.gameOver(false)
+    game.setGameOverEffect(false, effects.smiles)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     game.gameOver(false)
@@ -186,7 +189,7 @@ yooo = sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
-tiles.placeOnTile(yooo, tiles.getTileLocation(3, 35))
+tiles.placeOnTile(yooo, tiles.getTileLocation(2, 0))
 controller.moveSprite(yooo, 100, 0)
 scene.cameraFollowSprite(yooo)
 let novia = sprites.create(img`
@@ -207,18 +210,14 @@ let novia = sprites.create(img`
     . . . f f f f f f f f f f . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Enemy)
-novia.setPosition(3, 35)
-tiles.placeOnTile(novia, tiles.getTileLocation(0, 28))
+tiles.placeOnTile(novia, tiles.getTileLocation(0, -30))
 yooo.ay = 300
 novia.ay = 300
-novia.follow(yooo, 85)
+novia.follow(yooo, 75)
 music.play(music.melodyPlayable(music.beamUp), music.PlaybackMode.UntilDone)
-game.onUpdateInterval(2000, function () {
-    myEnemy = sprites.createProjectileFromSprite(assets.image`misil de esperma`, novia, 150, -80)
-    myEnemy.follow(yooo, 100)
-    myEnemy.ay = 200
-    myEnemy.ax = -50
+game.onUpdateInterval(5000, function () {
+    myEnemy = sprites.createProjectileFromSprite(assets.image`misil de esperma`, novia, 80, 0)
 })
 forever(function () {
-    music.play(music.stringPlayable("C C5 B F G D F C ", 125), music.PlaybackMode.UntilDone)
+    music.play(music.stringPlayable("C C5 B F G D F C ", 120), music.PlaybackMode.UntilDone)
 })
