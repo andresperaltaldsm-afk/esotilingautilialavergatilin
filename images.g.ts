@@ -1,4 +1,4 @@
-// Código generado automáticamente. No editar.
+// Auto-generated code. Do not edit.
 namespace myImages {
 
     helpers._registerFactory("image", function(name: string) {
@@ -125,6 +125,25 @@ namespace myImages {
 ..............................................
 ..............................................
 `;
+            case "image4":
+            case "misil de esperma":return img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . d d d d d d d . . 
+. . . d d d d d 1 1 1 1 1 d d . 
+. . . d 1 1 1 1 1 1 f 1 1 1 d . 
+. . d 1 1 1 1 1 1 1 1 1 1 1 d . 
+. d d 1 1 1 1 1 1 1 1 1 1 1 d . 
+d d 1 1 1 1 1 1 1 1 1 1 1 d d . 
+. d d 1 1 1 1 1 1 1 1 1 d d . . 
+. . d d d 1 1 1 1 1 d d d . . . 
+. . . . d d d d d d d . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`;
         }
         return null;
     })
@@ -169,4 +188,4 @@ namespace myImages {
     })
 
 }
-// Código generado automáticamente. No editar.
+// Auto-generated code. Do not edit.
